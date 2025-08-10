@@ -2,6 +2,14 @@
 
 import { EditorContent, useEditor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
+import { TaskList } from "@tiptap/extension-task-list";
+import { TaskItem } from "@tiptap/extension-task-item";
+import { Table } from "@tiptap/extension-table";
+import { TableCell } from "@tiptap/extension-table-cell";
+import { TableRow } from "@tiptap/extension-table-row";
+import { TableHeader } from "@tiptap/extension-table-header";
+import { Image } from "@tiptap/extension-image";
+import { ImageResize } from "tiptap-extension-resize-image";
 
 const Editor = () => {
   const editor = useEditor({
@@ -12,8 +20,32 @@ const Editor = () => {
           "focus:outline-none print:border-0 bg-white border border-[#C7C7C7] flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor-text",
       },
     },
-    extensions: [StarterKit],
-    content: "<p>Hello World: 🌍<p>",
+    extensions: [
+      StarterKit,
+      TaskList,
+      TaskItem.configure({ nested: true }),
+      Table,
+      TableCell,
+      TableRow,
+      TableHeader,
+      Image,
+      ImageResize,
+    ],
+    content:
+      "<table>\n" +
+      "          <tbody>\n" +
+      "            <tr>\n" +
+      "              <th>Name</th>\n" +
+      '              <th colspan="3">Description</th>\n' +
+      "            </tr>\n" +
+      "            <tr>\n" +
+      "              <td>Cyndi Lauper</td>\n" +
+      "              <td>Singer</td>\n" +
+      "              <td>Songwriter</td>\n" +
+      "              <td>Actress</td>\n" +
+      "            </tr>\n" +
+      "          </tbody>\n" +
+      "        </table>",
   });
 
   return (
