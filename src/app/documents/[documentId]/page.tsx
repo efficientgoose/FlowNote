@@ -1,4 +1,5 @@
 import React from "react";
+import Editor from "@/app/documents/[documentId]/editor";
 
 interface DocumentIdPageProps {
   params: Promise<{ documentId: string }>;
@@ -6,7 +7,11 @@ interface DocumentIdPageProps {
 
 const DocumentIdPage = async ({ params }: DocumentIdPageProps) => {
   const { documentId } = await params;
-  return <div>Document Id: {documentId}</div>;
+  return (
+    <div className="min-h-screen bg-[#FAFBFD]">
+      <Editor />
+    </div>
+  );
 };
 
 export default DocumentIdPage;
